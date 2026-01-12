@@ -4,7 +4,7 @@ from src.utils import save_results
 
 MODEL = "FacebookAI/roberta-base"
 DATA = "data/crows_pairs.csv"
-OUT = "results/bias_scores.csv"
+OUT = "results/bias_scores_fp32.csv"
 
 model, tokenizer = load_model(MODEL, precision="fp32")
 

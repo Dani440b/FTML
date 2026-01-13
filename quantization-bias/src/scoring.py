@@ -3,7 +3,6 @@ import torch
 def sentence_logprob(model, tokenizer, sentence):
     tokens = tokenizer(sentence, return_tensors="pt")
 
-    # Get the device the model is on (works for quantized models)
     device = next(model.parameters()).device
     tokens = {k: v.to(device) for k, v in tokens.items()}
 

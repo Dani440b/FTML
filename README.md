@@ -15,22 +15,23 @@ The structure of the project is:
 
 quantization-bias/
 ├── src/
-│   ├── data.py            # Dataset loaders (WinoBias, Winogender)
-│   ├── preprocessing.py   # Pronoun masking utilities for winogender
-│   ├── scoring.py         # Sentence and masked-token scoring
-│   ├── load_model.py      # Model + quantization loading
-│   └── utils.py           # Result saving helpers
+│   ├── data.py              # Dataset loaders (WinoBias, Winogender, CrowS-Pairs)
+│   ├── preprocessing.py     # Pronoun masking utilities (Winogender)
+│   ├── scoring.py           # Sentence and masked-token scoring
+│   ├── load_model.py        # Model loading + quantization
+│   └── utils.py             # Result saving helpers
 │
 ├── experiments/
 │   ├── run_winobias_type1.py
 │   ├── run_winogender.py
 │   ├── run_crows_pairs.py
-│   └── ... 		   # Other possible tests, can safely be ignored
+│   └── ...                  # Other experimental scripts (can be ignored)
 │
 ├── data/
 │   ├── winobias/
 │   ├── winogender/
-│   └── crows_pairs.csv    
+│   │   └── all_sentences.tsv
+│   └── crows_pairs.csv
 │
 └── results/
     ├── winobias/

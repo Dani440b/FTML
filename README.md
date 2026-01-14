@@ -14,29 +14,29 @@ The focus is on whether quantization amplifies, reduces, or destabilizes bias ra
 The structure of the project is:
 
 quantization-bias/
-├── src/
-│   ├── data.py              # Dataset loaders (WinoBias, Winogender, CrowS-Pairs)
-│   ├── preprocessing.py     # Pronoun masking utilities (Winogender)
-│   ├── scoring.py           # Sentence and masked-token scoring
-│   ├── load_model.py        # Model loading + quantization
-│   └── utils.py             # Result saving helpers
-│
-├── experiments/
-│   ├── run_winobias_type1.py
-│   ├── run_winogender.py
-│   ├── run_crows_pairs.py
-│   └── ...                  # Other experimental scripts (can be ignored)
-│
-├── data/
-│   ├── winobias/
-│   ├── winogender/
-│   │   └── all_sentences.tsv
-│   └── crows_pairs.csv
-│
-└── results/
-    ├── winobias/
-    ├── winogender/
-    └── crows_pairs/
+  src/
+    data.py            - Dataset loaders (WinoBias, Winogender, CrowS-Pairs)
+    preprocessing.py   - Pronoun masking utilities (Winogender)
+    scoring.py         - Sentence and masked-token scoring
+    load_model.py      - Model loading + quantization
+    utils.py           - Result saving helpers
+
+  experiments/
+    run_winobias_type1.py
+    run_winogender.py
+    run_crows_pairs.py
+    ...                - Other experimental scripts (can be ignored)
+
+  data/
+    winobias/
+    winogender/
+      all_sentences.tsv
+    crows_pairs.csv
+
+  results/
+    winobias/
+    winogender/
+    crows_pairs/
 
 I personally used micromamba to manage my python enviroment with python 3.10, here are the required packages:
 

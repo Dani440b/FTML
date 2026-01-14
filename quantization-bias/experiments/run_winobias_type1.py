@@ -34,13 +34,10 @@ def run_winobias_type1(model_name, precision):
             "pro_wins": win,
         })
 
-    # ✅ DEFINE df HERE (this was missing)
     df = pd.DataFrame(rows)
 
-    # overall bias (scalar)
     overall_bias = pro_wins / len(df)
 
-    # ---- detailed per-pair output ----
     save_results(
         summary_df=df,
         overall_score=overall_bias,
@@ -48,7 +45,6 @@ def run_winobias_type1(model_name, precision):
         out_path=DETAILED_OUT,
     )
 
-    # ---- summary statistics ----
     delta = df["pro_score"] - df["anti_score"]
 
     summary_df = pd.DataFrame([{

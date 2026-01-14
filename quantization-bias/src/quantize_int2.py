@@ -1,17 +1,12 @@
 import torch
 
 def quantize_model_int2(model):
-    """
-    Simulated 2-bit post-training quantization.
-    Applies uniform 4-level quantization to all floating-point parameters.
-    """
 
     with torch.no_grad():
         for name, param in model.named_parameters():
             if param.dtype not in (torch.float16, torch.float32):
                 continue
 
-            # Compute scale
             min_val = param.data.min()
             max_val = param.data.max()
 

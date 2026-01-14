@@ -22,7 +22,6 @@ def evaluate_winobias(model_name, precision):
 
     return bias_score
 
-
 if __name__ == "__main__":
     MODEL = "FacebookAI/roberta-base"
     for p in ["fp32", "fp16", "8bit", "4bit", "2bit"]:

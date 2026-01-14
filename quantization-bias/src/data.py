@@ -20,9 +20,6 @@ def load_winobias_type1_pairs(root):
 
 
 def load_winobias_type1_single(root, kind):
-    """
-    kind: 'pro' or 'anti'
-    """
     root = Path(root)
 
     if kind == "pro":
@@ -41,13 +38,6 @@ GENDER_TO_PRONOUN = {
 }
 
 def load_winogender(path):
-    """
-    Loads Winogender all_sentences.tsv with columns:
-    sentid \t sentence
-
-    sentid format:
-    occupation.participant.index.gender.txt
-    """
     groups = defaultdict(dict)
 
     with open(path, encoding="utf-8") as f:

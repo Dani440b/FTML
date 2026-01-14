@@ -29,13 +29,11 @@ def run_anti_only(model_name, precision):
             "logprob": score,
         })
 
-    # ✅ define df
     df = pd.DataFrame(rows)
 
     mean_lp = float(np.mean(scores))
     std_lp  = float(np.std(scores))
 
-    # ---- detailed output ----
     save_results(
         summary_df=df,
         overall_score=mean_lp,
@@ -43,7 +41,6 @@ def run_anti_only(model_name, precision):
         out_path=DETAILED_OUT,
     )
 
-    # ---- summary output ----
     summary_df = pd.DataFrame([{
         "precision": precision,
         "mean_logprob": mean_lp,

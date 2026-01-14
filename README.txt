@@ -3,9 +3,11 @@ While quantization is widely used to reduce memory and compute costs, its impact
 
 We evaluate how different precision levels (FP32, FP16, 8-bit, 4-bit, 2-bit) change bias metrics on established benchmarks:
 
+```
 - WinoBias
 - Winogender
 - CrowS-Pairs
+```
 
 The focus is on whether quantization amplifies, reduces, or destabilizes bias rather than accuracy alone.
 
@@ -37,13 +39,14 @@ quantization-bias/
 
 I personally used micromamba to manage my python enviroment with python 3.10, here are the required packages:
 
+```
 - torch 
 - transformers 
 - pandas 
 - tqdm 
 - bitsandbytes
 - numpy
-
+```
 
 All experiments are run as Python modules from the quantization-bias dir, as follow:
 

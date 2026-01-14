@@ -49,10 +49,16 @@ I personally used micromamba to manage my python enviroment with python 3.10, he
 - numpy
 ```
 
+## Running 
+
 All experiments are run as Python modules from the quantization-bias dir, as follow:
 
+```
 python -m experiments.run_winogender
 python -m experiments.run_winobias
 python -m experiments.run_crows_pairs
+```
 
 and will save the results in the results dir.
+
+## Credits 🤝

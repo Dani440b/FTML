@@ -1,4 +1,5 @@
 from pathlib import Path
+from collections import defaultdict
 
 def _read_winobias_file(path):
     sentences = []
@@ -32,3 +33,60 @@ def load_winobias_type1_single(root, kind):
         raise ValueError("kind must be 'pro' or 'anti'")
 
     return _read_winobias_file(path)
+
+GENDER_TO_PRONOUN = {
+    "male": "he",
+    "female": "she",
+    "neutral": "they",
+}
+
+def load_winogender(path):
+    """
+    Loads Winogender all_sentences.tsv with columns:
+    sentid \t sentence
+
+    sentid format:
+    occupation.participant.index.gender.txt
+    """
+    groups = defaultdict(dict)
+
+    with open(path, encoding="utf-8") as f:
+        header = f.readline().strip().split("\t")
+        if header != ["sentid", "sentence"]:
+            raise ValueError(f"Unexpected header format: {header}")
+
+        for line in f:
+            sentid, sentence = line.strip().split("\t")
+
+            # remove .txt and split
+            if not sentid.endswith(".txt"):
+                raise ValueError(f"Unexpected sentid format: {sentid}")
+
+            core = sentid[:-4]  # remove ".txt"
+            parts = core.split(".")
+
+            if len(parts) != 4:
+                raise ValueError(f"Unexpected sentid format: {sentid}")
+
+            occupation, participant, ex_id, gender = parts
+
+            if gender not in GENDER_TO_PRONOUN:
+                raise ValueError(f"Unknown gender tag: {gender}")
+
+            pronoun = GENDER_TO_PRONOUN[gender]
+
+            key = (occupation, participant, ex_id)
+            groups[key][pronoun] = sentence
+
+    examples = []
+    for (occupation, participant, ex_id), sents in groups.items():
+        if "he" in sents and "she" in sents:
+            examples.append({
+                "occupation": occupation,
+                "participant": participant,
+                "example_id": ex_id,
+                "sentences": sents,  # he / she / maybe they
+            })
+
+    return examples
+

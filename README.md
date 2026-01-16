@@ -61,7 +61,7 @@ All experiments are run as Python modules from the quantization-bias dir, as fol
 
 ```
 python -m experiments.run_winogender
-python -m experiments.run_winobias
+python -m experiments.run_winobias_type1
 python -m experiments.run_crows_pairs
 ```
 
